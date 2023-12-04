@@ -38,3 +38,7 @@ function unset-adbproxy {
     adb shell settings put global http_proxy :0
     adb shell settings get global http_proxy
     }
+
+function config { 
+    git --git-dir=$HOME/.cfg/ --work-tree=$HOME $args 
+    }    
