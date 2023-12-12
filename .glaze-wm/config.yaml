@@ -39,14 +39,14 @@ focus_borders:
     color: "#ff0000"
 
 bar:
-  height: "20px"
+  height: "25px"
   position: "top"
   opacity: 1.0
   background: "#20242cc4"
   foreground: "#ffffff"
-  font_family: "JetBrainsMono NFM"
-  font_size: "13px"
-  padding: "2px 3px"
+  font_family: "Liga SFMono Nerd Font"
+  font_size: "17px"
+  padding: "1px 1px"
   offset_x: "0"
   offset_y: "0"
   border_radius: "0"
@@ -58,8 +58,8 @@ bar:
       default_workspace_background: "transparent"
     
     - type: "tiling direction"
-      label_horizontal: " ||"
-      label_vertical: " =="
+      label_horizontal: " 󰤼"
+      label_vertical: " 󰤻"
       background: "#444444"
       forground: "#eeeeee"
       margin: "0 0"
@@ -69,51 +69,64 @@ bar:
       background: "#ff0000"
       margin: "0 0 0 0"
       padding: "0 0"
- 
-
-  component_separator:
-    label: " | "
 
   components_center:
     - type: "clock"
       time_formatting: "HH:mm ddd MMM d"
     
-    - type: "battery"
-      label_draining: "󱊢 {battery_level}%"
-      label_power_saver: "<attr fg='#800000'> 󱊡 {battery_level}% </attr>"
-      label_charging: "<attr fg='#008000'> 󰢞 {battery_level}% </attr>"
-    
-    - type: "cpu"
-      label: " 󰻠{percent_usage}%"
+  
+  components_right:
+   
+    #- type: "image"
+    #  source: "C:\\Users\\YechielWorenklein\\.glaze-wm\\cpunew1.png"
+    #- type: "cpu"
+    #  label: "{percent_usage}% "
 
+    - type: "image"
+      source: "C:\\Users\\YechielWorenklein\\.glaze-wm\\download.png"
     - type: "memory"
-      label: "󰍛 {percent_usage}%"
+      label: "{percent_usage}% "
 
     - type: "network"
       label_no_internet: "󰣼"
       label_ethernet: "Eth"
-      label_wifi_strength_0: "󰤯"
-      label_wifi_strength_25: "󰤟"
-      label_wifi_strength_50: "󰤢"
-      label_wifi_strength_75: "󰤥"
-      label_wifi_strength_100: "󰤨"
+      label_wifi_strength_0: "󰤯 "
+      label_wifi_strength_25: "󰤟 "
+      label_wifi_strength_50: "󰤢 "
+      label_wifi_strength_75: "󰤥 "
+      label_wifi_strength_100: "󰤨 "
     - type: "volume"
-      label_low: "🔊{volume_level}%"
-      label_medium: "🔊{volume_level}%"
-      label_high: "🔊{volume_level}%"
-      label_mute: "🔊{volume_level}%"
+      label_low: "🔊{volume_level}% "
+      label_medium: "🔊{volume_level}% "
+      label_high: "🔊{volume_level}% "
+      label_mute: "🔊{volume_level}% "
 
-  
-  components_right:
+    - type: "battery"
+      label_draining: "󱊢 {battery_level}%"
+      label_power_saver: "<attr fg='#800000'> 󱊡{battery_level}% </attr>"
+      label_charging: "󰢞 {battery_level}% "
+    
     - type: "system tray"
 
 workspaces:
   - name: "1"
+    display_name: "1) 󰒱"
+    bind_to_monitor: 1
+
   - name: "2"
+    display_name: "2) "
+    bind_to_monitor: 2
+
   - name: "3"
+    display_name: "3) "
+    bind_to_monitor: 3
+
   - name: "4"
   - name: "5"
   - name: "6"
+    display_name: "6) 󰚌"
+    bind_to_monitor: 3
+
   - name: "7"
   - name: "8"
   - name: "9"
@@ -122,7 +135,7 @@ window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
   # the WM as admin.
   - command: "ignore"
-    match_process_name: "/Taskmgr|ScreenClippingHost|Greenshot/"
+    match_process_name: "/Taskmgr|ScreenClippingHost|Greenshot|copyq/"
 
   # Launches system dialogs as floating by default (eg. File Explorer save/open dialog).
   - command: "set floating"
@@ -131,6 +144,12 @@ window_rules:
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "steam"
+
+  - command: "move to workspace 1"
+    match_process_name: "/WhatsApp/"
+    match_title: "/*slack*/"
+  - command: "move to workspace 3"
+    match_process_name: "/alacritty/"
 
 binding_modes:
   - name: "resize"
