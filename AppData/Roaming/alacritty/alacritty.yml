@@ -270,10 +270,10 @@ font:
 colors:
     primary:
         background: "#1E1E2E" # base
-        foreground: "#CDD6F4" # text
+        foreground: "#00ff00"  #ex CDD6F4" # text
         # Bright and dim foreground colors
-        dim_foreground: "#CDD6F4" # text
-        bright_foreground: "#CDD6F4" # text
+        dim_foreground: "#00ff00" # 39ff14"  #ex CDD6F4" # text
+        bright_foreground: "#00ff00"  #ex CDD6F4" # text
 
     # Cursor colors
     cursor:

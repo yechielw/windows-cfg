@@ -1,0 +1,61 @@
+matches:
+  - trigger: "::low"
+    replace: "{{output}}"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+      - name: output
+        type: shell
+        params:
+          cmd: "echo $ESPANSO_CLIPBOARD | wsl tr '[:upper:]' '[:lower:]'"
+  - trigger: "::up"
+    replace: "{{output}}"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+      - name: output
+        type: shell
+        params:
+          cmd: "echo $ESPANSO_CLIPBOARD | wsl tr '[:lower:]' '[:upper:]'"
+
+
+  - trigger: ";tb"
+    replace: "{{output}}"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+      - name: output
+        type: shell
+        params:
+          cmd: "echo $([Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('{{clipboard}}')))" 
+
+  - trigger: ";fb"
+    replace: "{{output}}"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+      - name: output
+        type: shell
+        params:
+          cmd: "echo $([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('{{clipboard}}')))" 
+
+
+  - trigger: ";url"
+    replace: "{{output}}"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+      - name: output
+        type: shell
+        params:
+          cmd: "echo $([System.Uri]::EscapeDataString('{{clipboard}}'))" 
+
+  - trigger: ";durl"
+    replace: "{{output}}"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+      - name: output
+        type: shell
+        params:
+          cmd: "echo $([System.Uri]::UnescapeDataString('{{clipboard}}'))" 
